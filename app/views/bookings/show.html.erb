@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seat label:</strong>
+  <%= @booking.seat_label %>
+</p>
+
+<p>
+  <strong>Fare:</strong>
+  <%= @booking.fare %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
