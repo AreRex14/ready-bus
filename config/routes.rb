@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :passengers
   resources :bookings
   
-  root to: 'bookings#new'
+  root to: 'welcome#index'
 end
