@@ -1,3 +1,3 @@
 class Payment < ApplicationRecord
-    has_one :booking
+    belongs_to :booking
 end
