@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ccnumber:</strong>
+  <%= @payment.ccnumber %>
+</p>
+
+<p>
+  <strong>Cvcnumber:</strong>
+  <%= @payment.cvcnumber %>
+</p>
+
+<p>
+  <strong>Ccexpmonth:</strong>
+  <%= @payment.ccexpmonth %>
+</p>
+
+<p>
+  <strong>Ccexpyear:</strong>
+  <%= @payment.ccexpyear %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>
