@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_165018) do
+ActiveRecord::Schema.define(version: 2020_07_20_071943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_165018) do
     t.integer "fare"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "traveler_id"
+    t.index ["traveler_id"], name: "index_bookings_on_traveler_id"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -34,4 +36,27 @@ ActiveRecord::Schema.define(version: 2020_07_19_165018) do
     t.index ["reset_password_token"], name: "index_passengers_on_reset_password_token", unique: true
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string "ccnumber"
+    t.string "cvcnumber"
+    t.string "ccexpmonth"
+    t.string "ccexpyear"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
+  create_table "travelers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_no", default: "", null: false
+    t.string "ic_no", default: "", null: false
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "bookings", "travelers"
+  add_foreign_key "payments", "bookings"
 end
