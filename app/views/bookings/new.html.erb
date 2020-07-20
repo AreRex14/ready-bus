@@ -714,7 +714,8 @@ $(document).ready(function() {
                     .data('seatId', this.settings.id)
 					.appendTo($cart);
 				
-				$("#passenger_booking_seat_no").val(this.settings.label);
+				$("#booking_seat_label").val(this.settings.label);
+				$("#booking_fare").val(this.data().price)
 					
 
                     /*
@@ -738,6 +739,7 @@ $(document).ready(function() {
                  $('#cart-item-'+this.settings.id).remove();
 
 				 $("#passenger_booking_seat_no").val("");
+				 $("#booking_fare").val(0);
 
                  //seat has been vacated
                  return 'available';
