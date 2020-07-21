@@ -53,6 +53,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Seat chart specifics
 gem 'jquery-rails', '~> 4.4'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+# Authentication purposes
 gem 'devise', '~> 4.7', '>= 4.7.2'
+# Payment purposes
+gem 'stripe', '~> 5.22'
