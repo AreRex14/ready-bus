@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_passenger!
 
     def after_sign_in_path_for(resource)
-        new_booking_path
+        new_traveler_path
     end
 end
