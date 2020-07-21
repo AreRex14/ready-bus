@@ -27,6 +27,28 @@ class TravelersController < ApplicationController
   # POST /travelers.json
   def create
     @traveler = Traveler.new(traveler_params)
+    #@traveler.passenger_id = current_passenger.id
+
+    token = params[:stripeToken]
+    card_brand = params[:passenger][:card_brand]
+    card_exp_month = params[:passenger][:card_exp_month]
+    card_exp_year = params[:passenger][:card_exp_year]
+    card_last4 = params[:passenger][:card_last4]
+
+    charge = Stripe::Charge.create(
+      amount: 4000,
+      currency: "usd",
+      description: "ReadyBus",
+      source: token
+    )
+
+    current_passenger.stripe_id = charge.id
+    current_passenger.card_brand = card_brand
+    current_passenger.card_exp_month = card_exp_month
+    current_passenger.card_exp_year = card_exp_year
+    current_passenger.card_last4 = card_last4
+    current_passenger.save!
+
 
     respond_to do |format|
       if @traveler.save
@@ -37,6 +59,10 @@ class TravelersController < ApplicationController
         format.json { render json: @traveler.errors, status: :unprocessable_entity }
       end
     end
+
+    rescue Stripe::CardError => e
+      flash.alert = e.message
+      render action: :new
   end
 
   # PATCH/PUT /travelers/1
