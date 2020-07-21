@@ -1,4 +1,4 @@
-<%= form_with(model: traveler, local: true) do |form| %>
+<%= form_with(model: traveler, local: true, class: "traveler-form") do |form| %>
   <% if traveler.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(traveler.errors.count, "error") %> prohibited this traveler from being saved:</h2>
@@ -49,6 +49,10 @@
       </div>
     <% end %>
   </div>
+
+    <hr class="border">
+
+    <%= render "payment_form" %>
 
   <div class="actions">
     <%= form.submit %>
