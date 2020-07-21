@@ -36,8 +36,8 @@ class TravelersController < ApplicationController
     card_last4 = params[:passenger][:card_last4]
 
     charge = Stripe::Charge.create(
-      amount: 4000,
-      currency: "usd",
+      amount: 2000,
+      currency: "myr",
       description: "ReadyBus",
       source: token
     )
