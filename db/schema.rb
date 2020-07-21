@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_100746) do
+ActiveRecord::Schema.define(version: 2020_07_21_070002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,19 +32,13 @@ ActiveRecord::Schema.define(version: 2020_07_20_100746) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_id"
+    t.string "card_brand"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.string "card_last4"
     t.index ["email"], name: "index_passengers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_passengers_on_reset_password_token", unique: true
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.string "ccnumber"
-    t.string "cvcnumber"
-    t.string "ccexpmonth"
-    t.string "ccexpyear"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "booking_id"
-    t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 
   create_table "travelers", force: :cascade do |t|
@@ -58,5 +52,4 @@ ActiveRecord::Schema.define(version: 2020_07_20_100746) do
   end
 
   add_foreign_key "bookings", "travelers"
-  add_foreign_key "payments", "bookings"
 end
