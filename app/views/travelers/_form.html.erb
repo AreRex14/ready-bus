@@ -36,21 +36,18 @@
     <%= form.number_field :age %>
   </div>
 
-  <div>
-    <h4>Booking Details</h4>
     <%= form.fields_for :bookings do |booking| %>
       <div class="field">
-        <%= booking.label :seat_label %>
-        <%= booking.text_field :seat_label %>
+        <%# booking.label :seat_label %>
+        <%= booking.hidden_field :seat_label %>
       </div>
       <div class="field">
-        <%= booking.label :fare %>
-        <%= booking.number_field :fare %>
+        <%# booking.label :fare %>
+        <%= booking.hidden_field :fare %>
       </div>
     <% end %>
-  </div>
 
-    <hr class="border">
+  <hr class="border">
 
     <%= render "payment_form" %>
 
