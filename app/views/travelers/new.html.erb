@@ -7,31 +7,29 @@
 
 <div class ="wrapper">
 <h1>New Booking</h1>
-    <div class="container">
+    <div class="seat-container">
         <div id="seat-map">
             <div class="front-indicator">Front</div>
 
-            <div id="legend"></div>  
         </div>
         <div class="booking-details">
 			<h2>Booking Details</h2>
 			<h3>Selected Seats (<span id="counter">0</span>):</h3>
 			<ul id="selected-seats"></ul>
 			Total: <b>RM<span id="total">0</span></b>
-			
-            <div>
-                <%= render 'form', traveler: @traveler %>
-                <%# render 'form', booking: @booking %>
-				<%# simple_form_for @booking do |f| %>
-					<%# f.input :passenger_name, label: 'Your full name', error: 'Your full name is required!' %>
-					<%# f.input :passenger_age %>
-					<%# f.simple_fields_for @booking do |b| %>
-						<%# b.input :seat_no, input_html: { type: "hidden" } %>
-					<%# f.button :submit, "Checkout", class: "checkout-button" %>
-            </div>
-            
-        </div>
-    </div>
+
+			<div id="legend"></div>  
+		</div>
+		
+		<%= render 'form', traveler: @traveler %>
+		<%# render 'form', booking: @booking %>
+		<%# simple_form_for @booking do |f| %>
+		<%# f.input :passenger_name, label: 'Your full name', error: 'Your full name is required!' %>
+		<%# f.input :passenger_age %>
+		<%# f.simple_fields_for @booking do |b| %>
+			<%# b.input :seat_no, input_html: { type: "hidden" } %>
+		<%# f.button :submit, "Checkout", class: "checkout-button" %>
+	</div>
 
     <%# link_to 'Back', travelers_path %>
 </div>
