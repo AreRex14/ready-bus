@@ -1,11 +1,22 @@
-<h1>Welcome to Ready Bus</h1>
-<p>Site Under Construction</p>
-
-<% if current_passenger.nil? %>
-    <%= link_to new_passenger_registration_path do %>Sign Up<% end %>
-	<%= link_to new_passenger_session_path, class: 'login-button' do %>Sign In<% end %>
-<% else %>
-    <%= link_to new_traveler_path, class: 'login-button' do %>Go to App<% end %>
-    <%= link_to edit_passenger_registration_path do %>Edit Profile<% end %>
-	<%= link_to destroy_passenger_session_path, method: :delete do %>Log out<% end %>
-<% end %>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to Ready Bus</h1>
+        <h2>Site Under Construction</h2>
+        <br>
+        <p>
+            <%= button_to 'Book Bus NOW', new_traveler_path, :method => :get, :class => "btn btn-primary btn-lg" %>
+        </p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Why queue, when you can book now</h3>
+            <p>Travel to your destination easily by booking bus seat with us</p>
+        </div>
+        <div class="col-lg-6">
+            <h3>Easy pay</h3>
+            <p>Pay easily with your debit/credit card</p>
+        </div>
+    </div>
+</div>
