@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark navbar-static-top navbar-expand-md">
+    <div class="container">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+        </button><%= link_to "Ready Bus Booker", root_path, class: 'navbar-brand' %>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item"><%= link_to 'Welcome', root_path, class: 'nav-link' %></li>
+                <li class="nav-item"><%= link_to 'Travel', new_traveler_path, class: 'nav-link login-button' %></li>
+                <% if current_passenger.nil? %>
+                <li class="nav-item"><%= link_to new_passenger_registration_path do %>Sign Up<% end %></li>
+                <li class="nav-item"><%= link_to new_passenger_session_path, class: 'login-button' do %>Sign In<% end %></li>
+                <% else %>
+                <li class="nav-item"><%= link_to edit_passenger_registration_path do %>Edit Profile<% end %></li>
+                <li class="nav-item"><%= link_to destroy_passenger_session_path, method: :delete do %>Log out<% end %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
