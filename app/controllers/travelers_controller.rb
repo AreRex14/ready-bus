@@ -27,7 +27,7 @@ class TravelersController < ApplicationController
   # POST /travelers.json
   def create
     @traveler = Traveler.new(traveler_params)
-    #@traveler.passenger_id = current_passenger.id
+    @traveler.passenger_id = current_passenger.id
 
     token = params[:stripeToken]
     card_brand = params[:passenger][:card_brand]
@@ -52,7 +52,7 @@ class TravelersController < ApplicationController
 
     respond_to do |format|
       if @traveler.save
-        format.html { redirect_to @traveler, notice: 'Traveler was successfully created.' }
+        format.html { redirect_to @traveler, notice: 'Your travel has successfully booked.' }
         format.json { render :show, status: :created, location: @traveler }
       else
         format.html { render :new }
