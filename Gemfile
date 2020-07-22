@@ -60,3 +60,5 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 # Payment purposes
 gem 'stripe', '~> 5.22'
+# HTML, CSS, JS custom, responsive styling
+gem 'bootstrap', '~> 4.5'
