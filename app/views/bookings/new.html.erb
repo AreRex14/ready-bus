@@ -1,14 +1,16 @@
-<h1>New Booking</h1>
-
 <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lato:400,700", media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= stylesheet_link_tag "bookings", 'data-turbolinks-track': 'reload' %>
 <%# stylesheet_link_tag "style", 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag "payments", 'data-turbolinks-track': 'reload' %>
+
+
 
 <div class ="wrapper">
-    <div class="container">
+<h1>New Booking</h1>
+    <div class="seat-container">
         <div id="seat-map">
             <div class="front-indicator">Front</div>
-        
+
         </div>
         <div class="booking-details">
 			<h2>Booking Details</h2>
@@ -16,19 +18,13 @@
 			<ul id="selected-seats"></ul>
 			Total: <b>RM<span id="total">0</span></b>
 
-			<div id="legend"></div>
-			
-            <div>
-                <%= render 'form', booking: @booking %>
-				<%# simple_form_for @booking do |f| %>
-					<%# f.input :passenger_name, label: 'Your full name', error: 'Your full name is required!' %>
-					<%# f.input :passenger_age %>
-					<%# f.simple_fields_for @booking do |b| %>
-						<%# b.input :seat_no, input_html: { type: "hidden" } %>
-					<%# f.button :submit, "Checkout", class: "checkout-button" %>
-			</div>
-        </div>
-    </div>
+			<div id="legend"></div>  
+		</div>
+		
+		<%= render 'form', booking: @booking %>
+	</div>
+
+    <%= link_to 'Back', bookings_path, :class => "btn btn-primary btn-sm" %>
 </div>
 
 <script>
@@ -714,8 +710,8 @@ $(document).ready(function() {
                     .data('seatId', this.settings.id)
 					.appendTo($cart);
 				
-				$("#booking_seat_label").val(this.settings.label);
-				$("#booking_fare").val(this.data().price)
+				$("#traveler_bookings_attributes_0_seat_label").val(this.settings.label);
+				$("#traveler_bookings_attributes_0_fare").val(this.data().price)
 					
 
                     /*
@@ -738,8 +734,8 @@ $(document).ready(function() {
                  //remove the item from our cart
                  $('#cart-item-'+this.settings.id).remove();
 
-				 $("#passenger_booking_seat_no").val("");
-				 $("#booking_fare").val(0);
+				 $("#traveler_bookings_attributes_0_seat_label").val("");
+				 $("#traveler_bookings_attributes_0_fare").val(0);
 
                  //seat has been vacated
                  return 'available';
@@ -773,5 +769,3 @@ function recalculateTotal(sc) {
     return total;
 }
 </script>
-
-<%= link_to 'Back', bookings_path %>
