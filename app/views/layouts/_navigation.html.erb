@@ -6,12 +6,12 @@
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item"><%= link_to 'Welcome', root_path, class: 'nav-link' %></li>
                 <li class="nav-item"><%= link_to 'Travel', new_traveler_path, class: 'nav-link login-button' %></li>
-                <% if current_passenger.nil? %>
-                <li class="nav-item"><%= link_to new_passenger_registration_path do %>Sign Up<% end %></li>
-                <li class="nav-item"><%= link_to new_passenger_session_path, class: 'login-button' do %>Sign In<% end %></li>
+                <% if current_user.nil? %>
+                <li class="nav-item"><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
+                <li class="nav-item"><%= link_to new_user_session_path, class: 'login-button' do %>Sign In<% end %></li>
                 <% else %>
-                <li class="nav-item"><%= link_to edit_passenger_registration_path do %>Edit Profile<% end %></li>
-                <li class="nav-item"><%= link_to destroy_passenger_session_path, method: :delete do %>Log out<% end %></li>
+                <li class="nav-item"><%= link_to edit_user_registration_path do %>Edit Profile<% end %></li>
+                <li class="nav-item"><%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %></li>
                 <% end %>
             </ul>
         </div>

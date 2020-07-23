@@ -27,13 +27,13 @@ class TravelersController < ApplicationController
   # POST /travelers.json
   def create
     @traveler = Traveler.new(traveler_params)
-    @traveler.passenger_id = current_passenger.id
+    @traveler.user_id = current_user.id
 
     token = params[:stripeToken]
-    card_brand = params[:passenger][:card_brand]
-    card_exp_month = params[:passenger][:card_exp_month]
-    card_exp_year = params[:passenger][:card_exp_year]
-    card_last4 = params[:passenger][:card_last4]
+    card_brand = params[:user][:card_brand]
+    card_exp_month = params[:user][:card_exp_month]
+    card_exp_year = params[:user][:card_exp_year]
+    card_last4 = params[:user][:card_last4]
 
     charge = Stripe::Charge.create(
       amount: 2000,
@@ -42,12 +42,12 @@ class TravelersController < ApplicationController
       source: token
     )
 
-    current_passenger.stripe_id = charge.id
-    current_passenger.card_brand = card_brand
-    current_passenger.card_exp_month = card_exp_month
-    current_passenger.card_exp_year = card_exp_year
-    current_passenger.card_last4 = card_last4
-    current_passenger.save!
+    current_user.stripe_id = charge.id
+    current_user.card_brand = card_brand
+    current_user.card_exp_month = card_exp_month
+    current_user.card_exp_year = card_exp_year
+    current_user.card_last4 = card_last4
+    current_user.save!
 
 
     respond_to do |format|

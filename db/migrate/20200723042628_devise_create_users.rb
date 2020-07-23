@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreatePassengers < ActiveRecord::Migration[6.0]
+class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :passengers do |t|
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,20 +31,18 @@ class DeviseCreatePassengers < ActiveRecord::Migration[6.0]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
-
       t.timestamps null: false
     end
 
-    add_index :passengers, :email,                unique: true
-    add_index :passengers, :reset_password_token, unique: true
-    # add_index :passengers, :confirmation_token,   unique: true
-    # add_index :passengers, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
 
     # Initialize first account:
-    Passenger.create! do |p|
-      p.email     = 'test@test.com'
-      p.password    = 'password'
+    User.create! do |u|
+      u.email     = 'test@test.com'
+      u.password    = 'password'
     end
   end
 end

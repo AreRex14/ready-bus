@@ -1,5 +1,5 @@
 class Traveler < ApplicationRecord
-    belongs_to :passenger
+    belongs_to :user
     has_many :bookings
     accepts_nested_attributes_for :bookings
 end
