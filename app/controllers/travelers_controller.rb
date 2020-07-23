@@ -27,6 +27,7 @@ class TravelersController < ApplicationController
   # POST /travelers.json
   def create
     @traveler = Traveler.new(traveler_params)
+    @amount = 2000
     @traveler.user_id = current_user.id
 
     token = params[:stripeToken]
@@ -36,7 +37,7 @@ class TravelersController < ApplicationController
     card_last4 = params[:user][:card_last4]
 
     charge = Stripe::Charge.create(
-      amount: 2000,
+      amount: @amount,
       currency: "myr",
       description: "ReadyBus",
       source: token
