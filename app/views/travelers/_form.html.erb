@@ -1,54 +1,60 @@
-<%= form_with(model: traveler, local: true, class: "traveler-form") do |form| %>
-  <% if traveler.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(traveler.errors.count, "error") %> prohibited this traveler from being saved:</h2>
+<div class="col-md-4">
+<h3 class="pt-5 mb-4">Traveler Details</h3>
+  <%= form_with(model: traveler, local: true, class: "traveler-form") do |form| %>
+    <% if traveler.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(traveler.errors.count, "error") %> prohibited this traveler from being saved:</h2>
 
-      <ul>
-        <% traveler.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone_no %>
-    <%= form.text_field :phone_no %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ic_no %>
-    <%= form.text_field :ic_no %>
-  </div>
-
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
-  </div>
-
-    <%= form.fields_for :bookings do |booking| %>
-      <div class="field">
-        <%# booking.label :seat_label %>
-        <%= booking.hidden_field :seat_label %>
-      </div>
-      <div class="field">
-        <%= booking.hidden_field :fare %>
+        <ul>
+          <% traveler.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
 
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone_no %>
+      <%= form.text_field :phone_no %>
+    </div>
+
+    <div class="field">
+      <%= form.label :ic_no %>
+      <%= form.text_field :ic_no %>
+    </div>
+
+    <div class="field">
+      <%= form.label :age %>
+      <%= form.number_field :age %>
+    </div>
+
+      <%= form.fields_for :bookings do |booking| %>
+        <div class="field">
+          <%# booking.label :seat_label %>
+          <%= booking.hidden_field :seat_label %>
+        </div>
+        <div class="field">
+          <%= booking.hidden_field :fare %>
+        </div>
+      <% end %>
+</div>
+
   <hr class="border">
 
+<div class="col-md-4">
+
     <%= render "payment_form" %>
+</div>
 
   <div class="actions">
     <%= form.submit "Book Travel" %>
