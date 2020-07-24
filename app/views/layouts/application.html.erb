@@ -17,11 +17,10 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-
     <main role="main">
+      <%= content_for?(:content) ? yield(:content) : yield %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
   </body>
 </html>
