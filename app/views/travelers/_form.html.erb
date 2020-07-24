@@ -42,7 +42,6 @@
         <%= booking.hidden_field :seat_label %>
       </div>
       <div class="field">
-        <%# booking.label :fare %>
         <%= booking.hidden_field :fare %>
       </div>
     <% end %>
@@ -52,6 +51,6 @@
     <%= render "payment_form" %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Book Travel" %>
   </div>
 <% end %>
