@@ -16,10 +16,12 @@
 /* import custom bootstrap variables before **bootstrap** */
 $white: white;
 $black: black;
+$crimson: crimson;
 
 .navbar {
     margin-bottom: 0;
-    background: $black;
+    background: $crimson;
+    font-weight: bold;
 }
 body {
     background: $black;
@@ -31,17 +33,17 @@ h1, h2 {
 }
 p {
     font-size: 16px;
-    color: $white;
+    color: $black;
 }
 a:visited {
     color: $black;
 }
 .jumbotron {
     background: #0048CD;
-    color: $white;
+    color: $black;
     text-align: center;
     p {
-        color: $white;
+        color: $black;
         font-size: 26px;
     }
 }
@@ -66,6 +68,6 @@ caption {
     clear: both;
 }
 
+@import "scaffolds";
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
-@import "scaffolds";
