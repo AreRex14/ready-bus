@@ -1,6 +1,8 @@
-<h1>Editing Booking</h1>
+<% if current_user.admin_role? %>
+    <h1>Editing Booking</h1>
 
-<%= render 'form', booking: @booking %>
+    <%= render 'form', booking: @booking %>
 
-<%= link_to 'Show', @booking, :class => "btn btn-primary btn-sm" %> |
-<%= link_to 'Back', bookings_path, :class => "btn btn-primary btn-sm" %>
+    <%= link_to 'Show', @booking, :class => "btn btn-primary btn-sm" %> |
+    <%= link_to 'Back', bookings_path, :class => "btn btn-primary btn-sm" %>
+<% end %>
