@@ -62,3 +62,5 @@ gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'stripe', '~> 5.22'
 # HTML, CSS, JS custom, responsive styling
 gem 'bootstrap', '~> 4.5'
+# Add administration views
+gem 'administrate'
