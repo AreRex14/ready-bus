@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pickup_station: MyString
+  pickup_time: 2020-08-06 16:58:16
+  dropoff_station: MyString
+  dropoff_time: 2020-08-06 16:58:16
+
+two:
+  pickup_station: MyString
+  pickup_time: 2020-08-06 16:58:16
+  dropoff_station: MyString
+  dropoff_time: 2020-08-06 16:58:16
