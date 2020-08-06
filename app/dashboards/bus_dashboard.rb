@@ -23,6 +23,7 @@ class BusDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   plate_no
+  operator_id
   created_at
   updated_at
   ].freeze
