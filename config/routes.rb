@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :users
       resources :operators
+      resources :buses
       resources :bookings
       resources :travelers
 
