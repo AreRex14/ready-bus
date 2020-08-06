@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :operators
       resources :buses
       resources :stations
+      resources :schedules
       resources :bookings
       resources :travelers
 
