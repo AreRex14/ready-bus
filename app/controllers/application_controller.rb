@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_user!
 
     def after_sign_in_path_for(resource)
-        new_traveler_path
+        if current_user.admin_role?
+          admin_users_path
+        else
+          new_traveler_path
+        end
     end
 end
