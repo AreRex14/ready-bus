@@ -13,9 +13,10 @@ Rails.application.routes.draw do
     end
   devise_for :users
 
-  get 'home/index'
-  get 'home/terms', as: "/terms"
-  get 'home/privacy', as: "/privacy"
+  get '/search', to: "home#index"
+  get '/schedule', to: "home#search"
+  get '/terms', to: "home#terms"
+  get '/privacy', to: "home#privacy"
 
   resources :travelers, only: [:show, :new, :create]
   #resources :bookings, only: [:index, :show, :new, :create]
