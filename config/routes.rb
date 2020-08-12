@@ -3,6 +3,7 @@ Rails.application.routes.draw do
       resources :users
       resources :operators
       resources :buses
+      resources :seats
       resources :stations
       resources :schedules
       resources :bookings
