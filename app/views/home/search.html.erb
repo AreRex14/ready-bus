@@ -1,0 +1,19 @@
+<h1>Schedules</h1>
+<table>
+    <tr>
+        <th>Pickup Station</th>
+        <th>Pickup Time</th>
+        <th>Dropoff Station</th>
+        <th>Dropoff Time</th>
+        <th>Bus</th>
+    <tr>
+<% @schedules.each do |schedule| %>
+    <tr>
+        <td><%= schedule.pickup_station %></td>
+        <td><%= schedule.pickup_time %></td>
+        <td><%= schedule.dropoff_station %></td>
+        <td><%= schedule.dropoff_time %></td>
+        <td><%= schedule.bus_id %></td>
+    </tr>
+</table>
+<% end %>
