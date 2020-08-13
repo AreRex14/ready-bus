@@ -738,7 +738,23 @@ $(document).ready(function() {
                  return this.style();
              }
          }
-     }); 
+	 }); 
+	 
+	 # not working yet
+	 setInterval(function(){
+		 $.ajax({
+			 type     : 'get',
+			 url      : '/booking/:id',
+			 datatype : 'json',
+			 success  : function(response) {
+				 //iterate through booking
+				 $.each(response.booking, function(show, booking) {
+					 //find seat by label and set its status to unavailable
+					sc.status(booking.seat_label, 'unavailable')
+				 });
+			 }
+		 });
+	 }, 10000);
      
      //this will handle "[cancel]" link clicks
      $('#selected-seats').on('click', '.cancel-cart-item', function() {
