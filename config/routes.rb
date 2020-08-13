@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   get '/privacy', to: "home#privacy"
 
   resources :travelers, only: [:show, :new, :create]
-  #resources :bookings, only: [:index, :show, :new, :create]
+  resources :bookings, only: [:show, :new, :create]
   root to: 'welcome#index'
 end
