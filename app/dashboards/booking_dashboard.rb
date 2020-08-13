@@ -14,6 +14,7 @@ class BookingDashboard < Administrate::BaseDashboard
     fare: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    schedule: Field::BelongsTo,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,6 +27,7 @@ class BookingDashboard < Administrate::BaseDashboard
   id
   seat_label
   fare
+  schedule
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class BookingDashboard < Administrate::BaseDashboard
   id
   seat_label
   fare
+  schedule
   created_at
   updated_at
   ].freeze
@@ -46,6 +49,7 @@ class BookingDashboard < Administrate::BaseDashboard
   traveler
   seat_label
   fare
+  schedule
   ].freeze
 
   # COLLECTION_FILTERS

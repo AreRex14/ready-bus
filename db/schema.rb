@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_024344) do
+ActiveRecord::Schema.define(version: 2020_08_13_100621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_024344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "traveler_id"
+    t.bigint "schedule_id", null: false
+    t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
     t.index ["traveler_id"], name: "index_bookings_on_traveler_id"
   end
 
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_024344) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "schedules"
   add_foreign_key "bookings", "travelers"
   add_foreign_key "buses", "operators"
   add_foreign_key "schedules", "buses"
