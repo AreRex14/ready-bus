@@ -13,6 +13,7 @@ class SeatDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     bus_id: Field::Number,
+    booked: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,6 +24,7 @@ class SeatDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   label
+  booked
   bus_id
   created_at
   updated_at
@@ -33,6 +35,7 @@ class SeatDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   label
+  booked
   created_at
   updated_at
   bus_id
@@ -43,6 +46,7 @@ class SeatDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   label
+  booked
   bus_id
   ].freeze
 
