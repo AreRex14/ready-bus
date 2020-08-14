@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item"><%= link_to 'Welcome', root_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to 'Travel', new_traveler_path, class: 'nav-link login-button' %></li>
+                <li class="nav-item"><%= link_to 'Travel', schedule_path, class: 'nav-link login-button' %></li>
                 <% if current_user.nil? %>
                 <li class="nav-item"><%= link_to new_user_registration_path, class: 'nav-link' do %>Sign Up<% end %></li>
                 <li class="nav-item"><%= link_to new_user_session_path, class: 'nav-link login-button' do %>Sign In<% end %></li>
