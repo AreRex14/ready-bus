@@ -1,4 +1,4 @@
-# create own form for each row and use js or jquery to get td value of schedule id of tr into input field
+<%# Add bus name later %>
 <h1>Schedules</h1>
 <table>
     <tr>
@@ -6,7 +6,7 @@
         <th>Pickup Time</th>
         <th>Dropoff Station</th>
         <th>Dropoff Time</th>
-        <th>Bus</th>
+        <th></th>
     <tr>
 <% @schedules.each do |schedule| %>
     <tr>
@@ -14,7 +14,11 @@
         <td><%= schedule.pickup_time %></td>
         <td><%= schedule.dropoff_station %></td>
         <td><%= schedule.dropoff_time %></td>
-        <td><%= schedule.bus_id %></td>
+        <td><%= link_to "Choose", new_traveler_path(schedule_id: schedule.id, schedule_bus_id: schedule.bus_id) %></td>
     </tr>
-</table>
 <% end %>
+</table>
+
+<script>
+
+</script>

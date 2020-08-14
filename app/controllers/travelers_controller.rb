@@ -14,15 +14,18 @@ class TravelersController < ApplicationController
 
   # GET /travelers/new
   def new
+    schedule_id = params[:schedule_id]
+    schedule_bus_id = params[:schedule_bus_id]
+
     @traveler = Traveler.new
     @traveler.bookings.build
-
   end
 
   # GET /travelers/1/edit
   def edit
   end
 
+  # Change to include schedule id and bus id to successfully booked
   # POST /travelers
   # POST /travelers.json
   def create
