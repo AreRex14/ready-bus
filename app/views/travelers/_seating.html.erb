@@ -654,6 +654,8 @@
 
 var firstSeatLabel = 1;
 
+var sendBookedSeats = [];
+
 $(document).ready(function() {
  var $cart = $('#selected-seats'),
      $counter = $('#counter'),
@@ -703,8 +705,11 @@ $(document).ready(function() {
 					.appendTo($cart);
 				
 				$("#traveler_bookings_attributes_0_seat_label").val(this.settings.label);
-				$("#traveler_bookings_attributes_0_fare").val(this.data().price)
-					
+				$("#traveler_bookings_attributes_0_fare").val(this.data().price);
+
+				sendBookedSeats.push(this.settings.id);
+				jsonSendBookedSeats = JSON.stringify(sendBookedSeats);
+				File.write('./db/sendBookedSeats.json', JSON.dump(jsonSendBookedSeats));
 
                     /*
 					 * Lets update the counter and total
@@ -729,6 +734,10 @@ $(document).ready(function() {
 				 $("#traveler_bookings_attributes_0_seat_label").val("");
 				 $("#traveler_bookings_attributes_0_fare").val(0);
 
+				 sendBookedSeats.splice(sendBookedSeats.indexOf(this.settings.id), 1);
+				 jsonSendBookedSeats = JSON.stringify(sendBookedSeats);
+				 File.append('./db/sendBookedSeats.json', JSON.dump(jsonSendBookedSeats));
+
                  //seat has been vacated
                  return 'available';
              } else if (this.status() == 'unavailable') {
@@ -746,8 +755,12 @@ $(document).ready(function() {
          sc.get($(this).parents('li:first').data('seatId')).click();
      });
 
+	 bookedSeats = File.read('./db/sendBookedSeats.json');
+	 bookedSeats_hash = JSON.parse(bookedSeats);
      //let's pretend some seats have already been booked
-	 sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
+	 //sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
+	 //convert hash object to array
+	 sc.get(bookedSeats_hash).status('unavailable');
 });
 
 function recalculateTotal(sc) {
