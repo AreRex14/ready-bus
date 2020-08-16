@@ -1,3 +1,5 @@
+require 'json'
+
 class TravelersController < ApplicationController
   before_action :set_traveler, only: [:show, :edit, :update, :destroy]
 
