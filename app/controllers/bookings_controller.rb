@@ -24,14 +24,11 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    #schedule_id = 
-
     @booking = Booking.new(booking_params)
-    #@booking.schedule_id = schedule_id
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to new_traveler_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -72,6 +69,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def booking_params
-      params.require(:booking).permit(:seat_label, :fare)
+      params.require(:booking).permit(:seat_label, :fare, :schedule_id)
     end
 end

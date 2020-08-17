@@ -14,9 +14,6 @@ class TravelersController < ApplicationController
 
   # GET /travelers/new
   def new
-    schedule_id = params[:schedule_id]
-    schedule_bus_id = params[:schedule_bus_id]
-
     @traveler = Traveler.new
   end
 
@@ -37,7 +34,7 @@ class TravelersController < ApplicationController
 
     respond_to do |format|
       if @traveler.save
-        format.html { redirect_to @traveler, notice: 'Traveler was successfully created.' }
+        format.html { redirect_to new_charge_path, notice: 'Traveler was successfully created.' }
         format.json { render :show, status: :created, location: @traveler }
       else
         format.html { render :new }
