@@ -12,15 +12,15 @@
         </ul>
       </div>
     <% end %>
-
+    
     <div class="field">
-      <%= form.label :seat_label %>
-      <%= form.text_field :seat_label %>
+      <%= form.hidden_field :seat_label %>
     </div>
-
     <div class="field">
-      <%= form.label :fare %>
-      <%= form.number_field :fare %>
+      <%= form.hidden_field :fare %>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :schedule_id %>
     </div>
 
     <div class="actions">
