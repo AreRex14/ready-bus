@@ -18,7 +18,6 @@ class TravelersController < ApplicationController
     schedule_bus_id = params[:schedule_bus_id]
 
     @traveler = Traveler.new
-    @traveler.bookings.build
   end
 
   # GET /travelers/1/edit
@@ -29,44 +28,22 @@ class TravelersController < ApplicationController
   # POST /travelers
   # POST /travelers.json
   def create
+    @booking = Booking.last
+    booking_id = @booking.id
+
     @traveler = Traveler.new(traveler_params)
-    @amount = 2000
     @traveler.user_id = current_user.id
-
-    token = params[:stripeToken]
-    card_brand = params[:user][:card_brand]
-    card_exp_month = params[:user][:card_exp_month]
-    card_exp_year = params[:user][:card_exp_year]
-    card_last4 = params[:user][:card_last4]
-
-    charge = Stripe::Charge.create(
-      amount: @amount,
-      currency: "myr",
-      description: "ReadyBus",
-      source: token
-    )
-
-    current_user.stripe_id = charge.id
-    current_user.card_brand = card_brand
-    current_user.card_exp_month = card_exp_month
-    current_user.card_exp_year = card_exp_year
-    current_user.card_last4 = card_last4
-    current_user.save!
-
+    @traveler.booking_id = booking_id
 
     respond_to do |format|
       if @traveler.save
-        format.html { redirect_to @traveler, notice: 'Your travel has successfully booked.' }
+        format.html { redirect_to @traveler, notice: 'Traveler was successfully created.' }
         format.json { render :show, status: :created, location: @traveler }
       else
         format.html { render :new }
         format.json { render json: @traveler.errors, status: :unprocessable_entity }
       end
     end
-
-    rescue Stripe::CardError => e
-      flash.alert = e.message
-      render action: :new
   end
 
   # PATCH/PUT /travelers/1
@@ -101,6 +78,6 @@ class TravelersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def traveler_params
-      params.require(:traveler).permit(:first_name, :last_name, :phone_no, :ic_no, :age, bookings_attributes: [:seat_label, :fare])
+      params.require(:traveler).permit(:first_name, :last_name, :phone_no, :ic_no, :age)
     end
 end

@@ -20,5 +20,7 @@ Rails.application.routes.draw do
 
   resources :travelers, only: [:show, :new, :create]
   resources :bookings, only: [:show, :new, :create]
+  resources :charges
+  
   root to: 'welcome#index'
 end

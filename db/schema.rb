@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_075745) do
+ActiveRecord::Schema.define(version: 2020_08_17_072007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_075745) do
     t.integer "fare"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "traveler_id"
     t.bigint "schedule_id", null: false
     t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
-    t.index ["traveler_id"], name: "index_bookings_on_traveler_id"
   end
 
   create_table "buses", force: :cascade do |t|
@@ -93,6 +91,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_075745) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "booking_id", null: false
+    t.index ["booking_id"], name: "index_travelers_on_booking_id"
     t.index ["user_id"], name: "index_travelers_on_user_id"
   end
 
@@ -116,9 +116,9 @@ ActiveRecord::Schema.define(version: 2020_08_16_075745) do
   end
 
   add_foreign_key "bookings", "schedules"
-  add_foreign_key "bookings", "travelers"
   add_foreign_key "buses", "operators"
   add_foreign_key "schedules", "buses"
   add_foreign_key "seats", "buses"
+  add_foreign_key "travelers", "bookings"
   add_foreign_key "travelers", "users"
 end
