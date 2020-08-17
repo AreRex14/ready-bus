@@ -24,7 +24,10 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    #schedule_id = 
+
     @booking = Booking.new(booking_params)
+    #@booking.schedule_id = schedule_id
 
     respond_to do |format|
       if @booking.save
