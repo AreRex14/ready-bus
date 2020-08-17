@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
         if current_user.admin_role?
           admin_users_path
         else
-          new_traveler_path
+          root_path
         end
     end
 end
