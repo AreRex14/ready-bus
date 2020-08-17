@@ -37,26 +37,11 @@
       <%= form.label :age %>
       <%= form.number_field :age %>
     </div>
-
-      <%= form.fields_for :bookings do |booking| %>
-        <div class="field">
-          <%# booking.label :seat_label %>
-          <%= booking.hidden_field :seat_label %>
-        </div>
-        <div class="field">
-          <%= booking.hidden_field :fare %>
-        </div>
-      <% end %>
 </div>
 
   <hr class="border">
 
-<div class="col-md-4">
-
-    <%= render "payment_form" %>
-</div>
-
   <div class="actions">
-    <%= form.submit "Book Travel" %>
+    <%= form.submit "Create Traveler" %>
   </div>
 <% end %>
