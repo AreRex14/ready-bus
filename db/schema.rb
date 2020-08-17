@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_100621) do
+ActiveRecord::Schema.define(version: 2020_08_16_075745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 2020_08_13_100621) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "operator_id", null: false
     t.index ["operator_id"], name: "index_buses_on_operator_id"
+  end
+
+  create_table "buses_seats", id: false, force: :cascade do |t|
+    t.bigint "bus_id"
+    t.bigint "seat_id"
+    t.index ["bus_id"], name: "index_buses_seats_on_bus_id"
+    t.index ["seat_id"], name: "index_buses_seats_on_seat_id"
   end
 
   create_table "operators", force: :cascade do |t|
@@ -68,6 +75,13 @@ ActiveRecord::Schema.define(version: 2020_08_13_100621) do
     t.string "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stations_schedules", id: false, force: :cascade do |t|
+    t.bigint "station_id"
+    t.bigint "schedule_id"
+    t.index ["schedule_id"], name: "index_stations_schedules_on_schedule_id"
+    t.index ["station_id"], name: "index_stations_schedules_on_station_id"
   end
 
   create_table "travelers", force: :cascade do |t|
