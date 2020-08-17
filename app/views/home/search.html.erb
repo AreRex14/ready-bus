@@ -14,7 +14,7 @@
         <td><%= schedule.pickup_time %></td>
         <td><%= schedule.dropoff_station %></td>
         <td><%= schedule.dropoff_time %></td>
-        <td><%= link_to "Choose", new_traveler_path(schedule_id: schedule.id, schedule_bus_id: schedule.bus_id) %></td>
+        <td><%= link_to "Choose", new_booking_path(schedule_id: schedule.id, schedule_bus_id: schedule.bus_id) %></td>
     </tr>
 <% end %>
 </table>
