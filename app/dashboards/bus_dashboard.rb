@@ -13,6 +13,8 @@ class BusDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     operator_id: Field::Number,
+    schedules: Field::HasMany,
+    seat: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

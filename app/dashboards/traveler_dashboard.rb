@@ -9,7 +9,7 @@ class TravelerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    bookings: Field::HasMany,
+    booking: Field::BelongsTo,
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
@@ -27,7 +27,7 @@ class TravelerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   user
-  bookings
+  booking
   id
   first_name
   ].freeze
@@ -36,7 +36,7 @@ class TravelerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   user
-  bookings
+  booking
   id
   first_name
   last_name
@@ -52,7 +52,7 @@ class TravelerDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   user
-  bookings
+  booking
   first_name
   last_name
   phone_no
