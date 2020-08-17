@@ -3,3 +3,18 @@
 <div class="container">
 	<%= render 'form', booking: @booking %>
 </div>
+
+<script>
+
+const queryString = window.location.search;
+//console.log(queryString);
+
+const urlParams = new URLSearchParams(queryString);
+
+//console.log(urlParams.has('schedule_id'));
+const schedule_id = urlParams.get('schedule_id')
+//console.log(schedule_id);
+
+$("#booking_schedule_id").val(schedule_id)
+
+</script>
