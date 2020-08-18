@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["ids"],
+  "properties": {
+      "ids": {
+          "type": "array",
+          "items": {
+              "$ref": "seatchart.json#/definitions/data"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+      }
+  }
+}
