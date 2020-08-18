@@ -1,7 +1,13 @@
-<%= render 'seating' %>
+<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lato:400,700", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag "bookings", 'data-turbolinks-track': 'reload' %>
+<%# stylesheet_link_tag "style", 'data-turbolinks-track': 'reload' %>
 
-<div class="container">
-	<%= render 'form', booking: @booking %>
+<div class ="wrapper">
+    <div class="seat-container col-md-4">
+		<%= render 'seating' %>
+
+		<%= render 'form', booking: @booking %>
+	</div>
 </div>
 
 <script>
