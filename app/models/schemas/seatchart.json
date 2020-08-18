@@ -1,0 +1,13 @@
+{
+    "definitions": {
+        "data": {
+            "type": "object",
+            "required": ["id", "labeled", "booked"],
+            "properties": {
+                "id": { "type": "string" },
+                "labeled": { "type": "string" },
+                "booked": { "type": "boolean" }
+            }
+        }
+    }
+}
