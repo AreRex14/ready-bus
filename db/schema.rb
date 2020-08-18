@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_100621) do
+ActiveRecord::Schema.define(version: 2020_08_18_065008) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "btree_gin"
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
@@ -55,12 +56,12 @@ ActiveRecord::Schema.define(version: 2020_08_13_100621) do
   end
 
   create_table "seats", force: :cascade do |t|
-    t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "bus_id", null: false
-    t.boolean "booked", default: false
+    t.jsonb "payload", default: "{}", null: false
     t.index ["bus_id"], name: "index_seats_on_bus_id"
+    t.index ["payload"], name: "index_seats_on_payload", using: :gin
   end
 
   create_table "stations", force: :cascade do |t|
