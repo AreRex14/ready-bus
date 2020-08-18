@@ -1,3 +1,39 @@
+<h1>Confirmation Details</h1>
+<table>
+    <tr>
+      <td>Traveler Id</td>
+      <td><%= @traveler_details.id %></td>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td><%= @traveler_details.first_name %></td>
+    </tr/>
+    <tr>
+      <td>Last Name</td>
+      <td><%= @traveler_details.last_name %></td>
+    </tr>
+    <tr>
+      <td>Phone No</td>
+      <td><%= @traveler_details.phone_no %></td>
+    </tr>
+    <tr>
+      <td>IC No</td>
+      <td><%= @traveler_details.ic_no %></td>
+    </tr>
+    <tr>
+      <td>Booking Id</td>
+      <td><%= @booking_details.id %></td>
+    </tr>
+    <tr>
+      <td>Seat No</td>
+      <td><%= @booking_details.seat_label %></td>
+    </tr>
+    <tr>
+      <td>Fare</td>
+      <td><%= @booking_details.fare %></td>
+    </tr>
+</table>
+
 <%= form_tag charges_path do %>
     <article>
       <% if flash[:error].present? %>
@@ -12,7 +48,7 @@
   
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Book a Seat with ReadyBus"
+            data-description="Book a Seat witd ReadyBus"
             data-amount="2000"
             data-locale="auto"></script>
   <% end %>
