@@ -60,6 +60,7 @@ gem 'jquery-rails', '~> 4.4'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 # To save, send and fetch data to/from rails backend
 gem 'json', '~> 2.3', '>= 2.3.1'
+gem 'activerecord_json_validator', '~> 1.3'
 # Authentication purposes
 gem 'devise', '~> 4.7', '>= 4.7.2'
 # Payment purposes
