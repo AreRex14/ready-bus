@@ -1,5 +1,7 @@
 class ChargesController < ApplicationController
     def new
+      @traveler_details = Traveler.last
+      @booking_details = Booking.last
     end
 
     def create
