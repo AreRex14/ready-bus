@@ -12,13 +12,13 @@
 
 <script>
 
-const queryString = window.location.search;
+const queryString = window.location.search.replace('#', '');
 //console.log(queryString);
 
 const urlParams = new URLSearchParams(queryString);
 
 //console.log(urlParams.has('schedule_id'));
-const schedule_id = urlParams.get('schedule_id')
+const schedule_id = urlParams.get('schedule_id');
 //console.log(schedule_id);
 
 $("#booking_schedule_id").val(schedule_id)
