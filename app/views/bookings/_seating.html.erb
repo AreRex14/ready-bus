@@ -1,13 +1,11 @@
-
 <div id="seat-map">
 	<div class="front-indicator">Front</div>
 
 </div>
 <div class="booking-details">
 	<h2>Booking Details</h2>
-	<h3>Selected Seats (<span id="counter">0</span>):</h3>
-	<ul id="selected-seats"></ul>
-	Total: <b>RM<span id="total">0</span></b>
+	<h3>Selected Seats:</h3>
+	<div id="selected-seats"></div>
 
 	<div id="legend"></div>  
 </div>
@@ -663,11 +661,6 @@ $(document).ready(function() {
              'eeeee',
          ],
          seats: {
-             f: {
-                 price   : 40,
-                 classes : 'first-class', //your custom CSS class
-                 category: 'First Class'
-             },
              e: {
                  price   : 20,
                  classes : 'economy-class', //your custom CSS class
@@ -690,7 +683,7 @@ $(document).ready(function() {
          click: function () {
              if (this.status() == 'available') {
                  //let's create a new <li> which we'll add to the cart items
-                 $('<li>'+this.settings.label+' <b>RM'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+                 $('<p>'+this.settings.label+' <b>RM'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></p>')
                     .attr('id', 'cart-item-'+this.settings.id)
                     .data('seatId', this.settings.id)
 					.appendTo($cart);
@@ -736,7 +729,7 @@ $(document).ready(function() {
      //this will handle "[cancel]" link clicks
      $('#selected-seats').on('click', '.cancel-cart-item', function() {
          //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
-         sc.get($(this).parents('li:first').data('seatId')).click();
+		 sc.get($(this).parents('p').data('seatId')).click();
      });
 
      //let's pretend some seats have already been booked
