@@ -3,7 +3,17 @@
 <%# stylesheet_link_tag "style", 'data-turbolinks-track': 'reload' %>
 
 <div class ="wrapper">
-    <div class="seat-container col-md-4">
+	<div class="seat-container col-md-4">
+
+		<script>
+			const regex = /&quot;/g;
+			var seatIds_true = JSON.parse(<%= @bookings_true.to_json %>.replace(regex,"'"));
+			//var seatIds_true = seatIds_true.replace(regex, "'");
+			//console.log(seatIds_true);
+			var seatIds_false = JSON.parse(<%= @bookings_false.to_json %>.replace(regex,"'"));
+			//var seatIds_false = seatIds_false.replace(regex,"'");
+			//console.log(seatIds_false);
+		</script>
 		<%= render 'seating' %>
 
 		<%= render 'form', booking: @booking %>
