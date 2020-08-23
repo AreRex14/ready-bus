@@ -25,7 +25,6 @@
  //= require jquery-ui
 
 (function($) {
-		
 	//'use strict';	
 		
 	$.fn.seatCharts = function (setup) {
@@ -650,7 +649,7 @@ var firstSeatLabel = 1;
 $(document).ready(function() {
  var $cart = $('#selected-seats'),
      $counter = $('#counter'),
-     $total = $('#total'),
+	 $total = $('#total'),
      sc = $('#seat-map').seatCharts({
          map: [
              'ee_ee',
@@ -695,7 +694,8 @@ $(document).ready(function() {
                     .data('seatId', this.settings.id)
 					.appendTo($cart);
 				
-				$("#booking_seat_label").val(this.settings.label);
+				$("#booking_seatLabel").val(this.settings.label);
+				$("#booking_seatId").val(this.settings.id);
 				$("#booking_fare").val(this.data().price)
 					
 
@@ -719,7 +719,8 @@ $(document).ready(function() {
                  //remove the item from our cart
                  $('#cart-item-'+this.settings.id).remove();
 
-				 $("#booking_seat_label").val("");
+				 $("#booking_seatLabel").val("");
+				 $("#booking_seatId").val("");
 				 $("#booking_fare").val(0);
 
                  //seat has been vacated
@@ -737,10 +738,15 @@ $(document).ready(function() {
      $('#selected-seats').on('click', '.cancel-cart-item', function() {
          //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
          sc.get($(this).parents('li:first').data('seatId')).click();
-     });
+	 });
 
      //let's pretend some seats have already been booked
 	 sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
+	 sc.get(seatIds_true).status('unavailable');
+	 //console.log(window.seatIds_true);
+	 sc.get(seatIds_false).status('available');
+	 //console.log(window.seatIds_false);
+
 });
 
 function recalculateTotal(sc) {
