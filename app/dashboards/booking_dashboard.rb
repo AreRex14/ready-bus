@@ -9,12 +9,14 @@ class BookingDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    seat_label: Field::String,
+    seatId: Field::String,
+    seatLabel: Field::String,
     fare: Field::Number,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    status: Field::Boolean,
     schedule: Field::BelongsTo,
-    traveler: Field::HasOne
+    traveler: Field::HasOne,
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,8 +26,10 @@ class BookingDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  seat_label
+  seatId
+  seatLabel
   fare
+  status
   schedule
   ].freeze
 
@@ -33,8 +37,10 @@ class BookingDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  seat_label
+  seatId
+  seatLabel
   fare
+  status
   schedule
   created_at
   updated_at
@@ -44,8 +50,10 @@ class BookingDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  seat_label
+  seatId
+  seatLabel
   fare
+  status
   schedule
   ].freeze
 

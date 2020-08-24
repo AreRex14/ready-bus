@@ -17,6 +17,9 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+
+    @bookings_true = Booking.where(status: true).pluck(:seatId)
+    @bookings_false = Booking.where(status: false).pluck(:seatId)
   end
 
   # GET /bookings/1/edit
@@ -71,6 +74,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def booking_params
-      params.require(:booking).permit(:seat_label, :fare, :schedule_id)
+      params.require(:booking).permit(:seatId, :seatLabel, :fare, :schedule_id)
     end
 end
