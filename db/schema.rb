@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_101441) do
+ActiveRecord::Schema.define(version: 2020_08_24_031207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
+    t.string "seatLabel"
     t.integer "fare"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "schedule_id", null: false
     t.string "seatId"
-    t.string "seatLabel"
     t.boolean "status", default: true
+    t.bigint "schedule_id", null: false
     t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
   end
 
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_101441) do
   end
 
   create_table "seats", force: :cascade do |t|
+    t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "bus_id", null: false
